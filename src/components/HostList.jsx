@@ -1,20 +1,20 @@
 import React from 'react'
-import { FlatList, RefreshControl, View } from 'react-native'
-import LogItem from './LogItem'
+import { FlatList, RefreshControl, View} from 'react-native'
 import AppBar from "./AppBar"
 import constants from '../constants'
 import { useEffect, useState } from 'react'
+import HostItem from './HostItem'
 
-const LogList = () => {
+const HostList = () => {
     const [refreshing, setRefreshing] = useState(false);
-    const [logs, setLogs] = useState(null)
+    const [hosts, setHosts] = useState(null)
     const [count, setCount] = useState(null)
-    const getLogs = () => {
-        fetch(`${constants.url}:${constants.port}${constants.views.logs.uris.all}`)
+    const getHosts = () => {
+        fetch(`${constants.url}:${constants.port}${constants.views.hosts.uris.all}`)
             .then(res => res.json())
             .then(data => {
                 setRefreshing(false)
-                setLogs(data.results)
+                setHosts(data.results)
                 setCount(data.count)
             })
             .catch(error => {
@@ -22,29 +22,29 @@ const LogList = () => {
             })
     }
     const onRefresh = () => {
-        setLogs([])
-        getLogs()
+        setHosts([])
+        getHosts()
     }
     
     useEffect(() => {
-        getLogs()
+        getHosts()
     }, [])
     return (
         <View style={{ flex: 1 }}>
-            <AppBar count={count} title='log' />
+            <AppBar count={count} title='host' />
             <FlatList
-                data={logs}
+                data={hosts}
                 refreshControl={
                     <RefreshControl
                       refreshing={refreshing}
                       onRefresh={onRefresh}
                     />
                   }
-                renderItem={({ item: log }) => (
-                    <LogItem {...log} />
+                renderItem={({ item: host }) => (
+                    <HostItem {...host}/>
             )}/>
         </View>
     )
 }
 
-export default LogList
+export default HostList

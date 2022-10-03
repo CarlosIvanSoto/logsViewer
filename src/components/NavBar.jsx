@@ -56,6 +56,7 @@ const NavBar = () => {
         <ScrollView showsHorizontalScrollIndicator={false} horizontal>
           <NavBarTab to='/home'>Home</NavBarTab>
           <NavBarTab to='/logs'>Logs</NavBarTab>
+          <NavBarTab to='/hosts'>Hosts</NavBarTab>
         </ScrollView>
       </View>
     </View>

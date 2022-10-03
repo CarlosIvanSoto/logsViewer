@@ -12,6 +12,12 @@ const constants = {
                 all: '/log/reverse'
             }
         },
+        hosts: {
+            title: 'Host disponibles',
+            uris:{
+                all: '/host'
+            }
+        },
         home: {
             title: 'Bienvenido'
         }

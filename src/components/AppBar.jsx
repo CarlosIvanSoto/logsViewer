@@ -20,6 +20,7 @@ const AppBar = ({title,count}) => {
   var txtTitle = constants.app.name
   txtTitle = title === 'home' ? constants.views.home.title : txtTitle
   txtTitle = title === 'log' ? constants.views.logs.title : txtTitle
+  txtTitle = title === 'host' ? constants.views.hosts.title : txtTitle
   return (
     <View style={styles.container}>
       <View style={styles.AppBar}>
